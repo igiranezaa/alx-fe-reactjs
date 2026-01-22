@@ -16,38 +16,38 @@ function Contact() {
     alert("Form submitted!");
   };
 
-  const inputStyle = { display: "block", margin: "10px 0", padding: "8px", width: "300px" };
-
   return (
     <div style={{ padding: "20px" }}>
       <h1>Contact Us</h1>
+
       <form onSubmit={handleSubmit}>
         <input
-          style={inputStyle}
+          style={{ display: "block", margin: "10px 0" }}
           type="text"
           name="name"
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
         />
+
         <input
-          style={inputStyle}
+          style={{ display: "block", margin: "10px 0" }}
           type="email"
           name="email"
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
         />
+
         <textarea
-          style={{ ...inputStyle, height: "100px" }}
+          style={{ display: "block", margin: "10px 0" }}
           name="message"
           placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
         />
-        <button type="submit" style={{ padding: "10px 14px" }}>
-          Send Message
-        </button>
+
+        <button type="submit">Send Message</button>
       </form>
     </div>
   );
