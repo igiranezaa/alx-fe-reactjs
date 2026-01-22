@@ -1,10 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { useRecipeStore } from "./recipeStore";
-
 import EditRecipeForm from "./EditRecipeForm";
 import DeleteRecipeButton from "./DeleteRecipeButton";
 
-const RecipeDetails = () => {
+const RecipeDetail = () => {
   const { id } = useParams();
   const recipeId = Number(id);
 
@@ -13,16 +12,11 @@ const RecipeDetails = () => {
   );
 
   if (!recipe) {
-    return (
-      <div>
-        <p>Recipe not found.</p>
-        <Link to="/">Go back</Link>
-      </div>
-    );
+    return <p>Recipe not found</p>;
   }
 
   return (
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: 20 }}>
+    <div>
       <Link to="/">← Back</Link>
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
@@ -33,4 +27,4 @@ const RecipeDetails = () => {
   );
 };
 
-export default RecipeDetails;
+export default RecipeDetail;
