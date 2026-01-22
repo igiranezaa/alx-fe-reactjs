@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
-import RecipeDetail from "./components/RecipeDetail";
+import RecipeDetails from "./components/RecipeDetails";
 
 const Home = () => (
   <>
@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/recipes/:id" element={<RecipeDetail />} />
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
       </Routes>
     </BrowserRouter>
   );

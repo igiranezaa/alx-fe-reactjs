@@ -3,7 +3,7 @@ import { useRecipeStore } from "./recipeStore";
 import EditRecipeForm from "./EditRecipeForm";
 import DeleteRecipeButton from "./DeleteRecipeButton";
 
-const RecipeDetail = () => {
+const RecipeDetails = () => {
   const { id } = useParams();
   const recipeId = Number(id);
 
@@ -27,4 +27,4 @@ const RecipeDetail = () => {
   );
 };
 
-export default RecipeDetail;
+export default RecipeDetails;
