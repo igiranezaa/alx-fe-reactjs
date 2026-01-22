@@ -8,23 +8,32 @@ const RecipeDetails = () => {
   const recipeId = Number(id);
 
   const recipe = useRecipeStore((state) =>
-    state.recipes.find((r) => r.id === recipeId)
+    state.recipes.find((recipe) => recipe.id === recipeId)
   );
 
+  const favorites = useRecipeStore((state) => state.favorites);
+  const addFavorite = useRecipeStore((state) => state.addFavorite);
+  const removeFavorite = useRecipeStore((state) => state.removeFavorite);
+
   if (!recipe) {
-    return <p>Recipe not found</p>;
+    return (
+      <div>
+        <p>Recipe not found.</p>
+        <Link to="/">Go back</Link>
+      </div>
+    );
   }
+
+  const isFavorite = favorites.includes(recipe.id);
 
   return (
     <div>
       <Link to="/">← Back</Link>
+
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
 
-      <EditRecipeForm recipe={recipe} />
-      <DeleteRecipeButton recipeId={recipe.id} />
-    </div>
-  );
-};
-
-export default RecipeDetails;
+      {/* ✅ Task 3: Favorite / Unfavorite */}
+      <button
+        onClick={() =>
+          i
