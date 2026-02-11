@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "200g spaghetti",
+      "2 large eggs",
+      "60g grated parmesan",
+      "120g bacon (or pancetta), diced",
+      "Freshly ground black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Cook spaghetti in salted boiling water until al dente. Reserve 1/2 cup pasta water.",
+      "Fry bacon until crisp. Turn off heat.",
+      "Whisk eggs, parmesan, and pepper in a bowl.",
+      "Toss drained pasta into the pan with bacon (off heat).",
+      "Pour egg mixture and toss quickly, adding pasta water as needed to make it creamy.",
+      "Serve immediately with extra parmesan and pepper."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Grilled chicken cooked in a rich, creamy tomato sauce with warm spices.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "400g chicken breast, cubed",
+      "1 cup yogurt",
+      "2 tsp garam masala",
+      "1 tsp paprika",
+      "1 tsp cumin",
+      "2 cloves garlic, minced",
+      "1 tbsp ginger, grated",
+      "1 can crushed tomatoes",
+      "1/2 cup cream",
+      "Salt"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices for at least 30 minutes.",
+      "Sear chicken pieces until lightly browned; remove.",
+      "Simmer tomatoes with garlic, ginger, and spices for 10 minutes.",
+      "Add cream and return chicken to the sauce; cook until done.",
+      "Serve with rice or naan."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Avocado Toast",
+    "summary": "Fast, fresh, and perfect for breakfast—crunchy toast with creamy avocado.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "2 slices bread",
+      "1 ripe avocado",
+      "1 tbsp lemon juice",
+      "Salt and pepper",
+      "Chili flakes (optional)"
+    ],
+    "instructions": [
+      "Toast bread until golden.",
+      "Mash avocado with lemon juice, salt, and pepper.",
+      "Spread on toast and top with chili flakes if you like."
+    ]
+  }
+]
