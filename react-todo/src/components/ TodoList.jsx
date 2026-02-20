@@ -1,60 +1,68 @@
-import { useMemo, useState } from "react";
-import AddTodoForm from "./AddTodoForm";
-
-const initialTodos = [
-  { id: 1, text: "Learn React", completed: false },
-  { id: 2, text: "Write tests", completed: false },
-  { id: 3, text: "Ship project", completed: true },
-];
+import { useState } from "react";
 
 export default function TodoList() {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Write tests", completed: false },
+    { id: 3, text: "Ship project", completed: true },
+  ]);
 
-  const nextId = useMemo(() => {
-    return () => Math.max(0, ...todos.map((t) => t.id)) + 1;
-  }, [todos]);
+  const [todoText, setTodoText] = useState("");
 
-  function addTodo(text) {
-    setTodos((prev) => [...prev, { id: nextId(), text, completed: false }]);
-  }
+  const addTodo = (e) => {
+    e.preventDefault();
 
-  function toggleTodo(id) {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    if (!todoText.trim()) return;
+
+    const newTodo = {
+      id: Date.now(),
+      text: todoText,
+      completed: false,
+    };
+
+    setTodos([...todos, newTodo]);
+    setTodoText("");
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
     );
-  }
+  };
 
-  function deleteTodo(id) {
-    setTodos((prev) => prev.filter((t) => t.id !== id));
-  }
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   return (
-    <div style={{ maxWidth: 520, margin: "0 auto", padding: 24 }}>
+    <div>
       <h2>Todo List</h2>
 
-      <AddTodoForm onAdd={addTodo} />
+      <form onSubmit={addTodo}>
+        <input
+          placeholder="Add a todo"
+          value={todoText}
+          onChange={(e) => setTodoText(e.target.value)}
+        />
+        <button type="submit">Add Todo</button>
+      </form>
 
-      <ul style={{ marginTop: 16, display: "grid", gap: 10, paddingLeft: 18 }}>
+      <ul>
         {todos.map((todo) => (
-          <li key={todo.id} style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <li key={todo.id}>
             <span
-              role="button"
-              tabIndex={0}
               onClick={() => toggleTodo(todo.id)}
-              onKeyDown={(e) => e.key === "Enter" && toggleTodo(todo.id)}
               style={{
-                flex: 1,
                 cursor: "pointer",
                 textDecoration: todo.completed ? "line-through" : "none",
-                opacity: todo.completed ? 0.6 : 1,
               }}
             >
               {todo.text}
             </span>
 
-            <button aria-label={`delete-${todo.id}`} onClick={() => deleteTodo(todo.id)}>
-              Delete
-            </button>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>

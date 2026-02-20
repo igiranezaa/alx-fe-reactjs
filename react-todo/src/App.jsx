@@ -1,5 +1,9 @@
 import TodoList from "./components/TodoList";
 
 export default function App() {
-  return <TodoList />;
+  return (
+    <div style={{ padding: 20 }}>
+      <TodoList />
+    </div>
+  );
 }
