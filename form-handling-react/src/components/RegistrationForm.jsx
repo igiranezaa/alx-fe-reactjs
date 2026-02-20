@@ -1,97 +1,70 @@
 import { useState } from "react";
 
 export default function RegistrationForm() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState({ loading: false, message: "", type: "" });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function validate(values) {
-    const nextErrors = {};
-    if (!values.username.trim()) nextErrors.username = "Username is required";
-    if (!values.email.trim()) nextErrors.email = "Email is required";
-    if (!values.password.trim()) nextErrors.password = "Password is required";
-    return nextErrors;
-  }
+  const [error, setError] = useState("");
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  }
-
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus({ loading: false, message: "", type: "" });
 
-    const validationErrors = validate(form);
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length > 0) return;
-
-    try {
-      setStatus({ loading: true, message: "", type: "" });
-
-      // Mock API call (simulate registration)
-      // You can replace this with your own endpoint later.
-      await new Promise((r) => setTimeout(r, 800));
-
-      setStatus({ loading: false, message: "Registration successful ✅", type: "success" });
-      setForm({ username: "", email: "", password: "" });
-    } catch (err) {
-      setStatus({ loading: false, message: "Registration failed ❌", type: "error" });
+    // Basic validation: no empty fields
+    if (!username || !email || !password) {
+      setError("All fields are required");
+      return;
     }
-  }
+
+    setError("");
+
+    // mock submit
+    console.log({ username, email, password });
+
+    // reset fields after submit
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
 
   return (
-    <div style={{ maxWidth: 420, margin: "0 auto" }}>
-      <h2>Controlled Registration Form</h2>
+    <div>
+      <h2>Registration Form (Controlled Components)</h2>
 
-      {status.message && (
-        <p style={{ padding: 10, borderRadius: 6, background: status.type === "success" ? "#e9ffe9" : "#ffe9e9" }}>
-          {status.message}
-        </p>
-      )}
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
 
-      <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12 }}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Username</label>
           <input
-            name="username"
-            value={form.username}
-            onChange={handleChange}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter username"
-            style={{ width: "100%", padding: 10 }}
           />
-          {errors.username && <small style={{ color: "crimson" }}>{errors.username}</small>}
         </div>
 
         <div>
           <label>Email</label>
           <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
-            style={{ width: "100%", padding: 10 }}
           />
-          {errors.email && <small style={{ color: "crimson" }}>{errors.email}</small>}
         </div>
 
         <div>
           <label>Password</label>
           <input
             type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
-            style={{ width: "100%", padding: 10 }}
           />
-          {errors.password && <small style={{ color: "crimson" }}>{errors.password}</small>}
         </div>
 
-        <button disabled={status.loading} style={{ padding: 10, cursor: "pointer" }}>
-          {status.loading ? "Submitting..." : "Register"}
-        </button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
