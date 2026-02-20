@@ -12,7 +12,6 @@ export default function Profile() {
         <Link to="settings">Settings</Link>
       </nav>
 
-      {/* Nested routes */}
       <Routes>
         <Route path="/" element={<ProfileDetails />} />
         <Route path="details" element={<ProfileDetails />} />

@@ -12,19 +12,17 @@ export default function App() {
           <Link to="/">Home</Link>
           <Link to="/profile">Profile</Link>
           <Link to="/posts/1">Post 1</Link>
-          <Link to="/posts/2">Post 2</Link>
           <Link to="/login">Login</Link>
         </nav>
 
         <Routes>
           <Route path="/" element={<h2>Home</h2>} />
+          <Route path="/login" element={<Login />} />
 
           {/* Dynamic route */}
           <Route path="/posts/:id" element={<Post />} />
 
-          <Route path="/login" element={<Login />} />
-
-          {/* Protected route */}
+          {/* Protected route (Profile) */}
           <Route
             path="/profile/*"
             element={
