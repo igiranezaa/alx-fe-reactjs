@@ -1,9 +1,11 @@
 import TodoList from "./components/TodoList";
 
-export default function App() {
+function App() {
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       <TodoList />
     </div>
   );
 }
+
+export default App;
